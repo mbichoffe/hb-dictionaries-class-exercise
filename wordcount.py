@@ -1,4 +1,6 @@
 # put your code here.
+import sys
+
 def get_word_count(filename):
 
     f = open(filename)
@@ -8,6 +10,7 @@ def get_word_count(filename):
     text = f.read().split()
 
     for word in text:
+        word = word.strip(' \' !*&#;:,.-+_? " ').lower()
         word_count[word] = word_count.get(word, 0) + 1
 
     f.close()
@@ -21,5 +24,5 @@ def print_word_count(dictionary):
         print key, value
 
 
-word_count = get_word_count("twain.txt")
+word_count = get_word_count(sys.argv[1])
 print_word_count(word_count)
